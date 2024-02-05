@@ -1,4 +1,4 @@
 package fr.moussalli.slackdej;
 
-public class test {
+public class test2 {
 }
