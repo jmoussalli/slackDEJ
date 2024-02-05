@@ -18,11 +18,11 @@ public class Channel {
     @Column(nullable = false)
     private Boolean deletable;
 
-    @OneToMany(mappedBy ="channel" ,cascade = CascadeType.ALL)
-    private List<Post> posts;
+//    @OneToMany(mappedBy ="channel" ,cascade = CascadeType.ALL)
+//    private List<Post> posts;
 
-    @ManyToOne
-    private User user;
+//    @ManyToOne
+//    private User user;
 
     public Long getId() {
         return id;
@@ -48,21 +48,21 @@ public class Channel {
         this.deletable = deletable;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<Post> getPosts() {
-        return posts;
-    }
-
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
+//
+//    public List<Post> getPosts() {
+//        return posts;
+//    }
+//
+//    public void setPosts(List<Post> posts) {
+//        this.posts = posts;
+//    }
 
     @Override
     public String toString() {
@@ -70,7 +70,7 @@ public class Channel {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", deletable=" + deletable +
-                ", user=" + user +
+//                ", user=" + user +
                 '}';
     }
 }
