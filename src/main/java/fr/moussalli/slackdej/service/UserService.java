@@ -23,22 +23,23 @@ public class UserService {
     ChannelRepository channelRepository;
 
 
-    public List<User> getAll(){
+    public List<User> getAll() {
         return userRepository.findAll();
     }
 
-    public Optional<User> getOneById(Integer id){
+    public Optional<User> getOneById(Integer id) {
         return userRepository.findById(id);
     }
 
-    public void addUser(User user){
+    public void addUser(User user) {
         userRepository.save(user);
     }
 
-    public void deleteUser(User user){
+    public void deleteUser(User user) {
 
     }
-      List<Post> posts = postRepository.findAll();
-      List<Channel> channels = channelRepository.findAll();
+}
 
-        clientRepository.save(user);
+//    List<Post> posts = postRepository.findAll();
+//    List<Channel> channels = channelRepository.findAll();
+//        clientRepository.save(user);
