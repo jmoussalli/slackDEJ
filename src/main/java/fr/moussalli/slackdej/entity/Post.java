@@ -17,11 +17,11 @@ public class Post {
     @Column(nullable = false)
     private Date postDateTime;
 
-//    @ManyToOne
-//    private User user;
-//
-//    @ManyToOne
-//    private Channel channel;
+    @ManyToOne
+    private User user;
+
+    @ManyToOne
+    private Channel channel;
 
 
     public Post() {
@@ -56,13 +56,13 @@ public class Post {
         this.postDateTime = postDateTime;
     }
 
-//    public User getUser() {return user;}
-//
-//    public void setUser(User user) {this.user = user;}
-//
-//    public Channel getChannel() {return channel;}
-//
-//    public void setChannel(Channel channel) {this.channel = channel;}
+    public User getUser() {return user;}
+
+    public void setUser(User user) {this.user = user;}
+
+    public Channel getChannel() {return channel;}
+
+    public void setChannel(Channel channel) {this.channel = channel;}
 
     @Override
     public String toString() {

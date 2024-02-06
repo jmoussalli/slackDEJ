@@ -2,6 +2,8 @@ package fr.moussalli.slackdej.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "channels")
 public class Channel {
@@ -13,11 +15,11 @@ public class Channel {
     @Column(nullable = false)
     private String name;
 
-//    @OneToMany(mappedBy ="channel" ,cascade = CascadeType.ALL)
-//    private List<Post> posts;
+    @OneToMany(mappedBy ="channel" ,cascade = CascadeType.ALL)
+    private List<Post> posts;
 
-//    @ManyToOne
-//    private User user;
+    @ManyToOne
+    private User user;
 
     public Long getId() {
         return id;
@@ -35,28 +37,28 @@ public class Channel {
         this.name = name;
     }
 
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
-//
-//    public List<Post> getPosts() {
-//        return posts;
-//    }
-//
-//    public void setPosts(List<Post> posts) {
-//        this.posts = posts;
-//    }
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
 
     @Override
     public String toString() {
         return "Channel{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-//                ", user=" + user +
+                ", user=" + user +
                 '}';
     }
 }

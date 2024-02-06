@@ -15,12 +15,11 @@ public class User {
     private String name;
     private String email;
 
-/*
     @OneToMany
-   private List<Post> posts;
+    private List<Post> posts;
+
     @OneToMany
     private List<Channel> channels;
-*/
 
     public User() {
     }
@@ -55,7 +54,7 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-/*
+
     public List<Post> getPosts() {
         return posts;
     }
@@ -83,5 +82,4 @@ public class User {
                 '}';
     }
 
- */
 }
