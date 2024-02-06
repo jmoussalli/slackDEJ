@@ -1,4 +1,10 @@
 package fr.moussalli.slackdej.repository;
 
-public class PostRepository {
+import fr.moussalli.slackdej.entity.Post;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface PostRepository extends JpaRepository<Post, Long> {
+
 }
