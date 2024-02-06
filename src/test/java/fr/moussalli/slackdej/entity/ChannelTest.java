@@ -1,6 +1,7 @@
 package fr.moussalli.slackdej.entity;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -9,7 +10,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
 class ChannelTest {
+
     @Test
     void getName() {
         Channel channel = new Channel();

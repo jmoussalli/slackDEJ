@@ -2,6 +2,7 @@ package fr.moussalli.slackdej.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,7 +17,7 @@ public class Channel {
     private String name;
 
     @OneToMany(mappedBy ="channel" ,cascade = CascadeType.ALL)
-    private List<Post> posts;
+    private List<Post> posts = new ArrayList<>();
 
     @ManyToOne
     private User user;
