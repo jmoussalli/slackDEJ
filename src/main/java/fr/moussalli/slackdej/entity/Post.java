@@ -1,5 +1,6 @@
 package fr.moussalli.slackdej.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -18,9 +19,13 @@ public class Post {
     private Date postDateTime;
 
     @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User user;
 
     @ManyToOne
+    @JoinColumn(name = "channel_id")
+    @JsonIgnore
     private Channel channel;
 
 

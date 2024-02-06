@@ -31,17 +31,9 @@ public class PostService {
         postRepository.deleteById(id);
     }
 
-    public void updatePost(Post post, long id) {
-//        Optional<Post> optionalPost = postRepository.findById(id);
-//        if (optionalPost.isPresent()) {
-////            Post existingPost = optionalPost.get();
-////            existingPost.setMessage(post.getTitle());
-////            existingPost.setPostDateTime(post.getContent());
-//            // You can update other fields as needed
-//
-//            // Save the updated post
-//            postRepository.save(existingPost);
-//        }
+    public Post updatePost(Post post, long id) {
+        postRepository.save(post);
+        return post;
     }
 
 }
