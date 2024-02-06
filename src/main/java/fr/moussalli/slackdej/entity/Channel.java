@@ -13,9 +13,6 @@ public class Channel {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
-    private Boolean deletable;
-
 //    @OneToMany(mappedBy ="channel" ,cascade = CascadeType.ALL)
 //    private List<Post> posts;
 
