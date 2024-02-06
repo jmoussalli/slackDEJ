@@ -21,6 +21,18 @@ public class Channel {
     @ManyToOne
     private User user;
 
+    public Channel() {
+    }
+
+    public Channel(String name) {
+        this.name = name;
+    }
+
+    public Channel(String name, User user) {
+        this.name = name;
+        this.user = user;
+    }
+
     public Long getId() {
         return id;
     }
@@ -58,6 +70,7 @@ public class Channel {
         return "Channel{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", posts=" + posts +
                 ", user=" + user +
                 '}';
     }
