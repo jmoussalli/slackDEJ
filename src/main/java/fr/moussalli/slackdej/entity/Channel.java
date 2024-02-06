@@ -34,6 +34,12 @@ public class Channel {
         this.user = user;
     }
 
+    public Channel(String name, User user, List<Post> posts) {
+        this.name = name;
+        this.user = user;
+        this.posts = posts;
+    }
+
     public Long getId() {
         return id;
     }
@@ -66,6 +72,11 @@ public class Channel {
         this.posts = posts;
     }
 
+    public List<Post> addPost(Post post) {
+        this.posts.add(post);
+        return this.posts;
+    }
+
     @Override
     public String toString() {
         return "Channel{" +
@@ -74,5 +85,23 @@ public class Channel {
                 ", posts=" + posts +
                 ", user=" + user +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Channel channel)) return false;
+
+        if (!getName().equals(channel.getName())) return false;
+        if (!getPosts().equals(channel.getPosts())) return false;
+        return getUser().equals(channel.getUser());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getName().hashCode();
+        result = 31 * result + getPosts().hashCode();
+        result = 31 * result + getUser().hashCode();
+        return result;
     }
 }
