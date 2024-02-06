@@ -2,8 +2,6 @@ package fr.moussalli.slackdej.entity;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
 @Table(name = "channels")
 public class Channel {
@@ -40,14 +38,6 @@ public class Channel {
         this.name = name;
     }
 
-    public Boolean getDeletable() {
-        return deletable;
-    }
-
-    public void setDeletable(Boolean deletable) {
-        this.deletable = deletable;
-    }
-
 //    public User getUser() {
 //        return user;
 //    }
@@ -69,7 +59,6 @@ public class Channel {
         return "Channel{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", deletable=" + deletable +
 //                ", user=" + user +
                 '}';
     }
