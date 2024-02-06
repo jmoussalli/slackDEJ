@@ -2,6 +2,7 @@ package fr.moussalli.slackdej.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -16,10 +17,10 @@ public class User {
     private String email;
 
     @OneToMany
-    private List<Post> posts;
+    private List<Post> posts = new ArrayList<>();
 
     @OneToMany
-    private List<Channel> channels;
+    private List<Channel> channels = new ArrayList<>();
 
     public User() {
     }
