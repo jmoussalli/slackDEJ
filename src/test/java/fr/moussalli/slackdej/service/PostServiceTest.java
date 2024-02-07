@@ -1,5 +1,8 @@
-package fr.moussalli.slackdej.entity;
+package fr.moussalli.slackdej.service;
 
+import fr.moussalli.slackdej.entity.Channel;
+import fr.moussalli.slackdej.entity.Post;
+import fr.moussalli.slackdej.entity.User;
 import fr.moussalli.slackdej.repository.ChannelRepository;
 import fr.moussalli.slackdej.repository.PostRepository;
 import fr.moussalli.slackdej.repository.UserRepository;
@@ -12,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @SpringBootTest
-class PostTests {
+class PostServiceTest {
 
     @Autowired
     UserRepository userRepository;
