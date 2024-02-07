@@ -11,51 +11,63 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("v1")
+@RequestMapping("/api/channels")
 public class ChannelController {
 
+    private final ChannelService channelService;
+
     @Autowired
-    private ChannelService channelService;
-
-    @GetMapping("channels")
-    public List<Channel> getChannels() {
-        return channelService.getAll();
+    public ChannelController(ChannelService channelService) {
+        this.channelService = channelService;
     }
 
-    // POST /channels
-    @PostMapping("channels")
-    public ResponseEntity<?> addChannel(@RequestBody Channel channel) {
-        if (channel.getName() != null && channel.getName().isBlank())
-            return ResponseEntity
-                    .badRequest()
-                    .body("le nom du channel est obligatoire");
-        else {
-            return ResponseEntity.status(HttpStatus.CREATED)
-                    .body(channelService.add(channel));
-        }
+    // Create a new Channel
+    @PostMapping
+    public ResponseEntity<Channel> createChannel(@RequestBody Channel channel) {
+        Channel newChannel = channelService.add(channel);
+        return new ResponseEntity<>(newChannel, HttpStatus.CREATED);
     }
 
-    // GET /channels/4
-    @GetMapping("channels/{id}")
-    public ResponseEntity getById(@PathVariable("id") Long id) {
-        Optional<Channel> optional = channelService.findById(id);
-        if (optional.isEmpty())
+    // Get all Channels
+    @GetMapping
+    public ResponseEntity<List<Channel>> getAllChannels() {
+        List<Channel> channels = channelService.getAll();
+        return ResponseEntity.ok(channels);
+    }
+
+    // Get a single Channel by ID
+    @GetMapping("/{id}")
+    public ResponseEntity<Channel> getChannelById(@PathVariable Long id) {
+        Optional<Channel> channel = channelService.findById(id);
+        return channel.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    // Update an existing Channel
+    @PutMapping("/{id}")
+    public ResponseEntity<Channel> updateChannel(@PathVariable Long id, @RequestBody Channel channelDetails) {
+        Optional<Channel> channelData = channelService.findById(id);
+
+        if (channelData.isPresent()) {
+            Channel updatedChannel = channelData.get();
+            updatedChannel.setName(channelDetails.getName());
+            updatedChannel.setUser(channelDetails.getUser());
+            updatedChannel.setPosts(channelDetails.getPosts());
+            channelService.update(updatedChannel);
+            return ResponseEntity.ok(updatedChannel);
+        } else {
             return ResponseEntity.notFound().build();
-        else {
-            return ResponseEntity.ok(optional.get());
         }
     }
 
-    // DELETE /channels/4
-    @DeleteMapping("channels/{id}")
-    public void delete(@PathVariable("id") Long id) {
-        channelService.delete(id);
+    // Delete a Channel
+    @DeleteMapping("/{id}")
+    public ResponseEntity<HttpStatus> deleteChannel(@PathVariable Long id) {
+        try {
+            channelService.delete(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
-
-    // PUT /channels/
-    @PutMapping("channels")
-    public void update(@RequestBody Channel channel) {
-        channelService.update(channel);
-    }
-
 }
