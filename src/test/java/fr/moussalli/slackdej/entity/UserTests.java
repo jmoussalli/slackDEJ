@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 @SpringBootTest
@@ -49,12 +51,16 @@ public class UserTests {
     @Test  // Attention à l'ordre des save
     void addPostUser(){
         User user1 = new User("John P", "johnP@jpj.com");
-        Post post1 = new Post();
-
-        postRepository.save(post1);
+        userRepository.save(user1);
 
         List<Post> posts = user1.getPosts();
+        Post post1 = new Post("bjr", Date.valueOf(LocalDate.now()));
         posts.add(post1);
+        user1.setPosts(posts);
+        userRepository.save(user1);
+
+
+
 
 
 
