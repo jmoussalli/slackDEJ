@@ -57,11 +57,11 @@ public class Channel {
     }
 
     public User getUser() {
-        return user;
-    }
+       return user;
+   }
 
     public void setUser(User user) {
-        this.user = user;
+         this.user = user;
     }
 
     public List<Post> getPosts() {
