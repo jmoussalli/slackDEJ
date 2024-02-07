@@ -33,26 +33,40 @@ public class PostController {
     }
 
     @PostMapping("/post")
-    public ResponseEntity<String> addPost(@RequestBody Post post) {
-        postService.addPost(post);
-        return new ResponseEntity<>("Post ajouté avec succès",HttpStatus.CREATED);
+    public ResponseEntity<?> addPost(@RequestBody Post post) {
+
+        if (post.getMessage() == null || post.getMessage().isBlank() ||
+                post.getPostDateTime() == null) {
+
+            return new ResponseEntity<>("Tous les champs doivent être remplis !", HttpStatus.BAD_REQUEST);
+        }
+        Post postAdded = postService.addPost(post);
+
+        return new ResponseEntity<>(postAdded, HttpStatus.CREATED);
     }
+
 
     @DeleteMapping("/post/{id}")
     public ResponseEntity<String> deletePost(@PathVariable long id) {
-        postService.deletePost(id);
-        return new ResponseEntity<>("Post supprimé avec succès", HttpStatus.NO_CONTENT);
+        Post existingPost = postRepository.findById(id).orElse(null);
+        if (existingPost != null) {
+            postService.deletePost(id);
+            return new ResponseEntity<>("Post avec l'id " + id + " supprimé avec succès", HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>("Post non trouvé avec l'Id : " + id, HttpStatus.NOT_FOUND);
+        }
     }
 
     @PutMapping("/post/{id}")
-    public ResponseEntity<String> updatePost(@RequestBody Post post, @PathVariable long id) {
+    public ResponseEntity<?> updatePost(@RequestBody Post post, @PathVariable long id) {
         Post existingPost = postRepository.findById(id).orElse(null);
         if (existingPost != null) {
             post.setId(id);
-            postService.updatePost(post, id);
-            return new ResponseEntity<>("Post mis à jour avec succès", HttpStatus.OK);
+            Post postUpdated = postService.updatePost(post, id);
+            return new ResponseEntity<>(postUpdated, HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("Post non trouvé avec l'ID : " + id, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Post non trouvé avec l'id : " + id, HttpStatus.NOT_FOUND);
         }
     }
+
 }
