@@ -79,6 +79,7 @@ class PostControllerTest {
         // Assertions
         assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
         assertEquals(mockPostAdded, responseEntity.getBody());
+
     }
 }
 
