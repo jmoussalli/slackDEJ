@@ -3,6 +3,7 @@ package fr.moussalli.slackdej.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.moussalli.slackdej.entity.Channel;
 import fr.moussalli.slackdej.service.ChannelService;
+import fr.moussalli.slackdej.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
@@ -29,6 +30,9 @@ class ChannelControllerTest {
 
     @MockBean
     private ChannelService channelService;
+
+    @MockBean
+    private UserService userService;
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
