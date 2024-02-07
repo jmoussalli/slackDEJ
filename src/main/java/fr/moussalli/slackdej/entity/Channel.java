@@ -16,7 +16,7 @@ public class Channel {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy ="channel" ,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy ="channel" ,cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Post> posts = new ArrayList<>();
 
     @ManyToOne

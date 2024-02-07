@@ -72,6 +72,16 @@ public class User {
         this.channels = channels;
     }
 
+    public User addPost(Post postToAdd) {
+        this.posts.add(postToAdd);
+        return this;
+    }
+
+    public User addChannel(Channel channelToAdd) {
+        this.channels.add(channelToAdd);
+        return this;
+    }
+
     @Override
     public String toString() {
         return "User{" +

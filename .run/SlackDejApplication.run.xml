@@ -20,7 +20,7 @@
     <module name="slackDEJ" />
     <extension name="coverage">
       <pattern>
-        <option name="PATTERN" value="fr.moussalli.slackdej.*" />
+        <option name="PATTERN" value="fr.moussalli.slackdej.entity.*" />
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>

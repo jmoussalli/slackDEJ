@@ -1,8 +1,5 @@
-package fr.moussalli.slackdej;
+package fr.moussalli.slackdej.entity;
 
-import fr.moussalli.slackdej.entity.Channel;
-import fr.moussalli.slackdej.entity.Post;
-import fr.moussalli.slackdej.entity.User;
 import fr.moussalli.slackdej.repository.ChannelRepository;
 import fr.moussalli.slackdej.repository.PostRepository;
 import fr.moussalli.slackdej.repository.UserRepository;
@@ -10,8 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
 import java.util.List;
+
 @SpringBootTest
 public class UserTests {
 
@@ -41,15 +38,15 @@ public class UserTests {
         userRepository.save(user1);
 
     }
+
     @Test
-    void addPostUser(){
+    void addPostUser() {
         User user1 = new User("John P", "johnP@jpj.com");
         Post post1 = new Post();
         List<Post> posts = user1.getPosts();
         posts.add(post1);
         user1.setPosts(posts);
         userRepository.save(user1);
-
 
 
     }
