@@ -18,9 +18,9 @@ public class UserController {
     @Autowired
     ChannelService channelService;
 
-    //GET ALL users
-    @GetMapping("users")
-    public
+//    //GET ALL users
+//    @GetMapping("users")
+//    public
 
 
 
