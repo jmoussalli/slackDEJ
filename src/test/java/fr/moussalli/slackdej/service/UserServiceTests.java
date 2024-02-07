@@ -61,7 +61,9 @@ public class UserServiceTests {
                 User user4 = new User("Joe P", "joeP@jpj.com");
                 userRepository.save(user4);
 
+
                 System.out.println(userRepository.findById(2));
+
             }
 
 

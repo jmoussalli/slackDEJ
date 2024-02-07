@@ -24,7 +24,6 @@ public class UserController {
     @Autowired
     ChannelService channelService;
 
-
  // GET ALL users
      @GetMapping("users")
      public ResponseEntity<List<User>> getAllUsers(){
@@ -73,8 +72,6 @@ public class UserController {
         return ResponseEntity.ok("Suppression réalisée!");
 
     }
-
-
 
 }
 
