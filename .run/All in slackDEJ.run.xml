@@ -5,9 +5,6 @@
     <option name="MAIN_CLASS_NAME" value="" />
     <option name="METHOD_NAME" value="" />
     <option name="TEST_OBJECT" value="package" />
-    <envs>
-      <env name="POSTGRESQL_DB_PASSWORD" value="Accords" />
-    </envs>
     <method v="2">
       <option name="Make" enabled="true" />
     </method>

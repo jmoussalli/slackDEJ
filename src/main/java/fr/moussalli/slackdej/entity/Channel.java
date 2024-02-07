@@ -77,6 +77,16 @@ public class Channel {
         return this.posts;
     }
 
+    public void removePost(Post post) {
+        posts.remove(post);
+        post.setChannel(null);
+    }
+
+    public void updatePosts(List<Post> updatedPosts) {
+        this.getPosts().clear();
+        updatedPosts.forEach(this::addPost);
+    }
+
     @Override
     public String toString() {
         return "Channel{" +

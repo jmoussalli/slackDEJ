@@ -46,18 +46,22 @@ public class ChannelController {
     // Update an existing Channel
     @PutMapping("/{id}")
     public ResponseEntity<Channel> updateChannel(@PathVariable Long id, @RequestBody Channel channelDetails) {
-        Optional<Channel> channelData = channelService.findById(id);
-
-        if (channelData.isPresent()) {
-            Channel updatedChannel = channelData.get();
-            updatedChannel.setName(channelDetails.getName());
-            updatedChannel.setUser(channelDetails.getUser());
-            updatedChannel.setPosts(channelDetails.getPosts());
-            channelService.update(updatedChannel);
-            return ResponseEntity.ok(updatedChannel);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return channelService.findById(id)
+                .map(channel -> {
+                    if (channelDetails.getName() != null) {
+                        channel.setName(channelDetails.getName());
+                    }
+                    if (channelDetails.getUser() != null) {
+                        channel.setUser(channelDetails.getUser());
+                    }
+                    if (channelDetails.getPosts() != null) {
+                        channel.getPosts().clear(); // Clear the existing collection
+                        channel.getPosts().addAll(channelDetails.getPosts()); // Add all from the new collection
+                    }
+                    channelService.update(channel);
+                    return ResponseEntity.ok(channel);
+                })
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     // Delete a Channel
