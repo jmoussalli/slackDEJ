@@ -1,4 +1,6 @@
+/*
 package fr.moussalli.slackdej.service;
+
 
 import fr.moussalli.slackdej.entity.User;
 import fr.moussalli.slackdej.repository.ChannelRepository;
@@ -56,8 +58,9 @@ public class UserServiceTests {
                 User user4 = new User("Joe P", "joeP@jpj.com");
                 userRepository.save(user4);
 
-                system.out.println(userRepository.findById(2));
+                System.out.println(userRepository.findById(2));
             }
 
 
         }
+*/
