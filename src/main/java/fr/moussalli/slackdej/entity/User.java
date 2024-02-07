@@ -8,19 +8,20 @@ import java.util.List;
 
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
+    //@Column(nullable = false)
     private String name;
+    //@Column(nullable = false)
     private String email;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Post> posts = new ArrayList<>();
 
-    @OneToMany(mappedBy ="user" ,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Channel> channels = new ArrayList<>();
 
@@ -83,6 +84,19 @@ public class User {
         this.channels.add(channelToAdd);
         return this;
     }
+
+    public void addPostUser(Post postToAdd, User user) {
+        user.getPosts().add(postToAdd);
+
+
+    }
+
+
+    public void addChannelUser(Channel channelToAdd, User user) {
+        user.getChannels().add(channelToAdd);
+
+    }
+
 
     @Override
     public String toString() {
