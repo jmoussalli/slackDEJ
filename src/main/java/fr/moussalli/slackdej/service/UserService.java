@@ -33,18 +33,6 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void addPostUser(Post postToAdd, User user){
-        user.getPosts().add(postToAdd);
-        userRepository.save(user);
-
-    }
-
-
-
-    public void addChannelUser(Channel channelToAdd, User user){
-        user.getChannels().add(channelToAdd);
-        userRepository.save(user);
-    }
 
     public void deleteUserById(Integer id) {
         userRepository.deleteById(id);

@@ -2,6 +2,7 @@
 package fr.moussalli.slackdej.service;
 
 
+
 import fr.moussalli.slackdej.entity.User;
 import fr.moussalli.slackdej.repository.ChannelRepository;
 import fr.moussalli.slackdej.repository.PostRepository;
@@ -12,6 +13,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class UserServiceTests {
@@ -41,7 +44,7 @@ public class UserServiceTests {
             userRepository.save(user4);
 
             users = userRepository.findAll();
-            System.out.println(users);
+
         }
 
             @Test
