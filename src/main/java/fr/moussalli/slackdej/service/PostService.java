@@ -23,8 +23,9 @@ public class PostService {
         return optionalPost.orElse(null);
     }
 
-    public void addPost(Post post) {
+    public Post addPost(Post post) {
         postRepository.save(post);
+        return post;
     }
 
     public void deletePost(long id) {
