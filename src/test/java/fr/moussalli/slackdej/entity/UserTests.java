@@ -1,4 +1,4 @@
-package fr.moussalli.slackdej;
+package fr.moussalli.slackdej.entity;
 
 import fr.moussalli.slackdej.entity.Channel;
 import fr.moussalli.slackdej.entity.Post;
@@ -30,23 +30,34 @@ public class UserTests {
         userRepository.save(user1);
     }
 
-    @Test
+    @Test // le channel a besoin d'un user pour être sauvé dans la BDD car NOT NULL
     void addChannelUser() {
         User user1 = new User("John P", "johnP@jpj.com");
+        userRepository.save(user1);
 
         List<Channel> channels = user1.getChannels();
         Channel channel1 = new Channel();
+        channel1.setUser(user1);
+        channel1.setName("canal1");
+        channelRepository.save(channel1);
         channels.add(channel1);
         user1.setChannels(channels);
         userRepository.save(user1);
 
     }
-    @Test
+
+    @Test  // Attention à l'ordre des save
     void addPostUser(){
         User user1 = new User("John P", "johnP@jpj.com");
         Post post1 = new Post();
+
+        postRepository.save(post1);
+
         List<Post> posts = user1.getPosts();
         posts.add(post1);
+
+
+
         user1.setPosts(posts);
         userRepository.save(user1);
 

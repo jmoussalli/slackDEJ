@@ -1,4 +1,4 @@
-package fr.moussalli.slackdej;
+package fr.moussalli.slackdej.entity;
 
 import fr.moussalli.slackdej.entity.Channel;
 import fr.moussalli.slackdej.entity.User;
@@ -30,7 +30,7 @@ class PostTests {
 
         Channel channel1 = new Channel();
         channel1.setName("canal 1");
-        channel1.setUser(user1);
+      //  channel1.setUser(user1);
 
         channelRepository.save(channel1);
     }

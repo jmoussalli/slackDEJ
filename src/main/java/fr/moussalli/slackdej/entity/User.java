@@ -1,5 +1,6 @@
 package fr.moussalli.slackdej.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -16,10 +17,11 @@ public class User {
     private String name;
     private String email;
 
-    @OneToMany
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Post> posts = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(mappedBy ="user" ,cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Channel> channels = new ArrayList<>();
 
     public User() {

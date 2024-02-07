@@ -30,7 +30,7 @@ class SlackDejApplicationTests {
 
         Channel channel1 = new Channel();
         channel1.setName("canal 1");
-        channel1.setUser(user1);
+       // channel1.setUser(user1);
 
         channelRepository.save(channel1);
     }
