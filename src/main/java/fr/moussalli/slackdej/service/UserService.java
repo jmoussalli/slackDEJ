@@ -23,8 +23,8 @@ public class UserService {
         return userRepository.findById(id);
     }
 // Ajouts
-    public void addUser(User user) {
-        userRepository.save(user);
+public User addUser(User user) {
+    return userRepository.save(user);
     }
 
 

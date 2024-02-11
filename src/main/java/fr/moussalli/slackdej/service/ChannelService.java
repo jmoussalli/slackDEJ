@@ -20,6 +20,10 @@ public class ChannelService {
         return channelRepository.save(a);
     }
 
+    public Channel save(Channel a) {
+        return channelRepository.save(a);
+    }
+
     public List<Channel> getAll() {
         return channelRepository.findAll();
     }
