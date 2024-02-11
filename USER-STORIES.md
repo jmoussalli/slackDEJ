@@ -93,8 +93,3 @@ connecter.
 
 - L'app doit être facile à utiliser sur n'importe quel appareil.
 - Le design doit être cool et simple, peu importe la taille de l'écran.
-
-Ces user stories décrivent les fonctionnalités clés de l'application de tchat de manière simple et directe, ce qui
-devrait rendre les attentes claires pour des adolescents ou pour des développeurs travaillant sur le projet.
-
-
