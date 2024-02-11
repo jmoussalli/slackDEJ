@@ -16,6 +16,9 @@ public class Channel {
     @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
+    private Boolean isDeletable;
+
     @OneToMany(mappedBy ="channel" ,cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Post> posts = new ArrayList<>();
 
@@ -56,6 +59,14 @@ public class Channel {
         this.name = name;
     }
 
+    public Boolean getisDeletable() {
+        return isDeletable;
+    }
+
+    public void setisDeletable(Boolean isDeletable) {
+        this.isDeletable = isDeletable;
+    }
+
     public User getUser() {
        return user;
    }
@@ -63,6 +74,7 @@ public class Channel {
     public void setUser(User user) {
          this.user = user;
     }
+
 
     public List<Post> getPosts() {
         return posts;
@@ -92,6 +104,7 @@ public class Channel {
         return "Channel{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", isDeletable=" + isDeletable +
                 ", posts=" + posts +
                 ", user=" + user +
                 '}';
