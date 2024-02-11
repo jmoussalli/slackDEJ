@@ -1,16 +1,10 @@
 package fr.moussalli.slackdej.service;
 
-import ch.qos.logback.core.net.server.Client;
-import fr.moussalli.slackdej.entity.Channel;
-import fr.moussalli.slackdej.entity.Post;
 import fr.moussalli.slackdej.entity.User;
-import fr.moussalli.slackdej.repository.ChannelRepository;
-import fr.moussalli.slackdej.repository.PostRepository;
 import fr.moussalli.slackdej.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,6 +52,10 @@ public class UserService {
             userRepository.save(userToUpdate);
         }
         return optional;
+    }
+
+    public int nombreDeUsers() {
+        return userRepository.findAll().size();
     }
 
 }

@@ -36,4 +36,8 @@ public class ChannelService {
         channelRepository.save(channel);
     }
 
+    public int nombreDeChannels() {
+        return channelRepository.findAll().size();
+    }
+
 }
