@@ -1,7 +1,6 @@
 # User Stories
 
-Voici des user stories simplifiées et adaptées à un public adolescent pour le projet d'application de tchat en ligne
-inspirée de Slack :
+Voici des user stories simplifiées pour le projet d'application de tchat en ligne inspirée de Slack :
 
 ### User Story 1: Entrer dans l'App de Tchat
 
