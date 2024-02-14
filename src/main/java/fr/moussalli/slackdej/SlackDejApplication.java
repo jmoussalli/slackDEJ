@@ -6,10 +6,11 @@ import fr.moussalli.slackdej.entity.User;
 import fr.moussalli.slackdej.service.ChannelService;
 import fr.moussalli.slackdej.service.PostService;
 import fr.moussalli.slackdej.service.UserService;
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -33,9 +34,12 @@ public class SlackDejApplication {
     }
 
 
-    // @Postconstruct permet de s'assurer que la méthode initApplication va s'exécuter
-    // un fois que la class SlackDejApplication a été instanciée et ses dépendances injectées
-    @PostConstruct
+    // @EventListener(ApplicationReadyEvent.class) permet de s'assurer que la méthode initApplication
+    // va s'exécuter une fois que la class SlackDejApplication a été instanciée et que le contexte
+    // d'application est complètement prêt.
+    // Cela signifie que l'utilisation de cet événement garantit que la méthode d'initialisation
+    // s'exécute à un point où tous les services, contrôleurs et configurations sont pleinement opérationnels.
+    @EventListener(ApplicationReadyEvent.class)
     void initApplication() {
         // Placer ici l'initialisation de l'application
         // Canal général par défaut
@@ -52,7 +56,7 @@ public class SlackDejApplication {
 
             // Création d'un post de bienvenue
             Post postDeBienvenue = new Post("Hello !", Date.valueOf(LocalDate.now()));
-            postDeBienvenue.setUser(userAdmin);
+            postDeBienvenue.setUser(savedUser);
             Post savedPostDeBienvenue = postService.addPost(postDeBienvenue);
             System.out.println("// initialisation application : post 'Bienvenue !' créé");
 
