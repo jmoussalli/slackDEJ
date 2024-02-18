@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @SpringBootTest
-class PostServiceTest {
+class PostServiceIntegrationTest {
 
     @Autowired
     UserRepository userRepository;
