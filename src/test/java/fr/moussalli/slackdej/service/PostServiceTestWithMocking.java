@@ -23,7 +23,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
-class PostServiceTestMock {
+class PostServiceTestWithMocking {
 
     @Mock
     private UserRepository userRepository;

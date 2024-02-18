@@ -2,9 +2,11 @@ package fr.moussalli.slackdej.controller;
 
 import fr.moussalli.slackdej.entity.Post;
 import fr.moussalli.slackdej.service.PostService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,7 @@ import java.util.Date;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -25,6 +28,11 @@ class PostControllerTest {
 
     @InjectMocks
     private PostController postController;
+
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+    }
 
     @Test
     void testGetAllPosts() {
@@ -79,7 +87,28 @@ class PostControllerTest {
         // Assertions
         assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
         assertEquals(mockPostAdded, responseEntity.getBody());
-
     }
+
+//    @Test
+//    void testDeletePostById() {
+//        long postId = 1L;
+//
+//        // Mockez la réponse du service
+//        doNothing().when(postService).deletePost(postId);
+//
+//        // Appelez la méthode du contrôleur
+//        ResponseEntity<?> responseEntity = postController.deletePost(postId);
+//
+//        // Assertions
+//        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+//        assertEquals("Post with " + postId + " successfully deleted", responseEntity.getBody());
+//
+//        // Vérifiez que la méthode du service a été appelée avec le bon ID
+//        verify(postService, times(1)).deletePost(postId);
+//    }
+
+
+
+
 }
 
